@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+    --card: 222 47% 13%;
+    --card-foreground: 0 0% 100%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 265 89% 78%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 223 47% 20%;
+    --muted-foreground: 215.4 16.3% 80%;
+    --accent: 222 47% 15%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 265 89% 78%;
+    --radius: 0.5rem;
+
+    /* Sidebar specific colors */
+    --sidebar-background: 224 47% 11%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 265 89% 78%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 223 47% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 223 47% 20%;
+    --sidebar-ring: 265 89% 78%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.status-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2;
+}
+
+.status-badge.approved {
+  @apply bg-emerald-500/20 text-emerald-500;
+}
+
+.status-badge.rejected {
+  @apply bg-destructive/20 text-destructive;
+}
+
+.nav-item {
+  @apply flex items-center gap-3 px-4 py-2 rounded-lg text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors;
+}
+
+.nav-item.active {
+  @apply bg-accent text-accent-foreground;
+}
+
+.bg-sidebar-gradient {
+  background: linear-gradient(to bottom, #132121, #131919);
+}
