@@ -81,8 +81,8 @@ const data: DataItem[] = [
 
 const DataTable = () => {
   return (
-    <div className="w-full bg-[#191919]">
-      <div className="w-full h-[80%] bg-[#191919] rounded-lg p-4">
+    <div className="w-full min-h-[100vh] bg-[#0C0C0C] flex justify-center border border-[#0C0C0C]">
+      <div className="w-full h-[90%] bg-[#191919] rounded-lg p-0">
         {/* Header */}
         <div className="grid grid-cols-[100px_150px_1fr_auto_auto_auto_auto] gap-4 p-4 text-sm font-medium text-muted-foreground bg-[#222222] rounded-lg mb-4">
           <div>User</div>
@@ -96,10 +96,13 @@ const DataTable = () => {
 
         {/* Data Rows */}
         <div className="divide-y divide-border rounded-lg overflow-hidden">
-          {data.map((item) => (
+          {data.map((item, index) => (
             <div
               key={item.id}
-              className="grid grid-cols-[100px_150px_1fr_auto_auto_auto_auto] gap-4 p-2 items-center hover:bg-muted/50 transition-colors"
+              className={cn(
+                "grid grid-cols-[100px_150px_1fr_auto_auto_auto_auto] gap-4 p-2 items-center hover:bg-muted/50 transition-colors",
+                index === 0 ? "bg-[#0E2833]" : "" // Highlight the first row
+              )}
             >
               {/* User (Avatar only) */}
               <div className="flex items-center justify-center">
@@ -118,7 +121,7 @@ const DataTable = () => {
               </div>
 
               {/* AI Performance with time */}
-              <div className="text-sm text-primary flex items-center gap-2">
+              <div className="text-sm text-white flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 <span>{item.time}</span>
                 <span className="mx-2">|</span>
@@ -131,11 +134,10 @@ const DataTable = () => {
                   variant={item.status === 'approved' ? 'default' : 'outline'}
                   size="sm"
                   className={cn(
-                    'gap-2 rounded-lg',
+                    'gap-4 rounded-lg',
                     item.status === 'approved' && 'bg-[#4cc72e] hover:bg-[#3da424]'
                   )}
                 >
-                  {/* <Check className="w-3 h-3" /> */}
                   Approved
                 </Button>
               </div>
@@ -146,11 +148,10 @@ const DataTable = () => {
                   variant={item.status === 'rejected' ? 'destructive' : 'outline'}
                   size="sm"
                   className={cn(
-                    'gap-2 rounded-lg',
+                    'gap-4 rounded-lg',
                     item.status === 'rejected' && 'bg-[#fb4f4f] hover:bg-[#e04545]'
                   )}
                 >
-                  {/* <X className="w-3 h-3" /> */}
                   Rejected
                 </Button>
               </div>
